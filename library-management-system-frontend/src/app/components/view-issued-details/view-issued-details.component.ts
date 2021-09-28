@@ -55,6 +55,10 @@ searchByDueDate?:FormGroup
     successNotification(){
       Swal.fire('Success', 'Book request sent Successfully!', 'success')
     }
+    successFineNotification(){
+      Swal.fire('Success', 'Fine Amount updated Successfully!', 'success')
+
+    }
     viewIssuedBooks() {
       this.issueBookService.getAllIssuedDetails().subscribe(
         (res:any)=>{
@@ -66,6 +70,16 @@ searchByDueDate?:FormGroup
          
        }
       )}  
+
+
+      updateFine(){
+        this.issueBookService.updateFine(this.searchByIssueId.get('issueId').value).subscribe(data=>{
+        },error=>{
+          this.successFineNotification()
+          this.viewIssuedBooks()
+
+        })
+      }
       getByUserId(){
         if(this.textValue == ""){
           this.viewIssuedBooks()
