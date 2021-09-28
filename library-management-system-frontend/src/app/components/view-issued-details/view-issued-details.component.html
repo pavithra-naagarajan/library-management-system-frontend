@@ -19,7 +19,7 @@
           <form novalidate [formGroup]="searchByIssueId">
               <input type="number" placeholder="Enter Issue Id" formControlName="issueId" size="9px" [(ngModel)]="textValue" (keyup)="getByIssueId()">
               <input [(ngModel)]="issueId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
-             
+              <button  class="btn btn-primary" (click)="updateFine()">Update Fine</button>
           </form>
           </div>
           <div *ngIf="searchBy=='userId'"><br>
