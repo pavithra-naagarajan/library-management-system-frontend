@@ -1,0 +1,55 @@
+<body>
+<div *ngIf="show">
+    <br><br>
+<h2 align="center">Users Details</h2>
+    <br><br>
+    <div class="reglist">
+        <div>
+            <table class="table table-striped" >
+              <thead>
+                <tr>
+                <th>Admin Id </th>
+                <th>Admin Name</th>
+                <th>Admin Role</th>
+                
+                <th>Mail Id</th>
+                
+              <th>Delete</th>
+              
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let a of admins">
+               <td>
+                  {{a.adminId}}
+                </td>
+                <td>
+                    {{a.adminName}}
+                </td>
+                
+                <td>
+                    {{a.adminPassword}}
+                </td>
+                <td>
+                    {{a.mailId}}
+                </td>
+                
+               
+                <td>
+                   
+                    <button class="btn btn-primary" (click)="deleteAlertConfirmation(a.adminId)">Delete</button>
+                </td> 
+               
+              
+                
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <br>
+          <button  class="btn btn-danger" (click)="return()">Back</button>
+      
+</div>
+</body>
+

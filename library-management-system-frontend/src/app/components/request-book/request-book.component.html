@@ -1,0 +1,112 @@
+<body>
+    <div>
+       
+        <h4 align="center">
+            <table  align="center">
+
+           <tr>
+            <th>Book Id </th><td>:</td>
+            <td>{{book.bookId}}</td>
+        </tr>
+        <tr>
+            <th>ISBN </th><td>:</td>
+            <td>{{book.isbn}}</td>
+        </tr>
+        <tr>
+            <th> Book Name </th><td>:</td>
+            <td>{{book.bookName}}</td>
+        </tr>
+        <tr>
+            <th>Author Name </th><td>:</td>
+            <td>{{book.authorName}}</td>
+        </tr>
+        <tr>
+            <th>Book Genre </th><td>:</td>
+            <td>{{book.genre}}</td>
+        </tr>
+        <tr>
+            <th>Book Genre </th><td>:</td>
+            <td>{{book.genre}}</td>
+        </tr>
+        <tr>
+            <th>Publisher </th><td>:</td>
+            <td>{{book.publisher}}</td>
+        </tr>
+        <tr>
+            <th>Volume </th><td>:</td>
+            <td>{{book.volume}}</td>
+        </tr>
+        <tr>
+            <th>Edition </th><td>:</td>
+            <td>{{book.edition}}</td>
+        </tr>
+        </table></h4>
+    </div>
+    
+  
+       <br><br>
+        <div>
+       
+        <h4 align="center">
+            <table  align="center">
+
+           <tr>
+            <th>User Id </th><td>:</td>
+            <td>{{user.userId}}</td>
+        </tr>
+        <tr>
+            <th> First Name </th><td>:</td>
+            <td>{{user.firstName}}</td>
+        </tr>
+        <tr>
+            <th>Last Name </th><td>:</td>
+            <td>{{user.lastName}}</td>
+        </tr>
+        <tr>
+            <th>User Role </th><td>:</td>
+            <td>{{user.userRole}}</td>
+        </tr>
+        <tr>
+            <th>User MailId </th><td>:</td>
+            <td>{{user.mailId}}</td>
+        </tr>
+        
+        <tr>
+            <th>Mobile Number </th><td>:</td>
+            <td>{{user.mobileNumber}}</td>
+        </tr>
+        <tr>
+            <th>Address </th><td>:</td>
+            <td>{{user.address}}</td>
+        </tr>
+        </table></h4>
+    </div>
+<br><br><br>
+<form novalidate style="margin-left: 500px;width: 250px;" [formGroup]="requestBookForm" (ngSubmit)="addRequestBook()">
+
+    <div class="form-group">
+        <label>*Number Of Days :</label>
+        <input type="text" class="form-control" formControlName="numberOfDays">
+
+        <div class="alert alert-danger"
+        *ngIf="requestBookForm.get('numberOfDays').hasError('required') && requestBookForm.get('numberOfDays').dirty">
+       Enter the Number Of Days!
+    </div>
+
+    <div class="alert alert-danger"
+    *ngIf="requestBookForm.get('numberOfDays').hasError('max') && requestBookForm.get('numberOfDays').dirty">
+   The maximum number of days should be 25!
+</div>
+      </div> 
+
+<br>
+
+    <button type="submit"  class="btn btn-primary" >Request Book</button>&nbsp;&nbsp;
+    <button class="btn btn-success" type="reset">Reset</button>&nbsp;&nbsp;
+    <br><br><br>
+     <button  class="btn btn-danger" (click)="return()">Back</button>
+    </form>
+<br><br>
+
+ </body>
+  

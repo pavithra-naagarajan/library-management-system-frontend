@@ -1,0 +1,42 @@
+<body>
+    <h2 align="center">Admin Profile</h2>
+    
+    <div *ngIf="showProfile">
+        <div class="AdminProfile">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Admin Id</th>
+                        <th>Admin Name</th>
+                        <th>Admin Role</th>
+                        <th>Password Id</th>
+                        <th>Mail Id</th>
+                        <th>Edit</th>
+                       
+              
+                </tr></thead>
+    
+                <tbody>
+                    <tr>
+                       <td>{{admin.adminId}}</td>
+                        <td>{{admin.adminName}}</td>
+                        <td>{{admin.adminRole}}</td>
+                        <td>{{admin.adminPassword}}</td>
+                        <td>{{admin.mailId}}</td>
+                      
+                        <td>
+                            <button class="btn btn-primary" (click)="updateAdmin(admin.adminId)">Edit Profile</button></td>
+                       
+    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+            <button  class="btn btn-primary" (click)="return()">Back</button>
+            
+    </div>
+    <br><br><br>
+    <br><br><br>
+    </body>
+      

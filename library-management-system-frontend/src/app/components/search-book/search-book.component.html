@@ -1,0 +1,101 @@
+
+
+<button (click)="searchBy='name'" class="btn btn-success">Search By BookName</button>&nbsp;&nbsp;&nbsp;
+
+<button (click)="searchBy='author'" class="btn btn-success">Search By AuthorName</button>&nbsp;&nbsp;&nbsp;
+
+<select   [(ngModel)]="genre" (change)="getBookByGenre($event)" class="dropdown">
+<option *ngFor="let item of book" [ngValue]="item.value">{{item.viewValue}}</option>
+</select>&nbsp;&nbsp;&nbsp;
+
+
+
+
+<div *ngIf="searchBy=='name'"><br>
+<form novalidate [formGroup]="searchByBookName">
+    <input type="text" placeholder="Enter Book Name" formControlName="bookName" [(ngModel)]="textValue" (keyup)="getBookByBookName()">
+    <input [(ngModel)]="bookName"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+    
+</form>
+</div>
+    
+
+
+<div *ngIf="searchBy=='author'"><br>
+    <form novalidate [formGroup]="searchByAuthorName">
+        <input type="text" placeholder="Enter Author Name" formControlName="authorName" [(ngModel)]="textValue" (keyup)="getBookByAuthorName()">
+        <input [(ngModel)]="authorName"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+       
+    </form>
+    </div>
+
+
+
+
+<body>
+    <h2 align="center">Book Details</h2>
+    <!--     <button style="margin-left: 1400px" class="btn btn-primary" (click)="searchRoom()">Search Room</button>&nbsp;&nbsp;&nbsp;&nbsp;
+     -->    <br><br>
+            <div class="reglist">
+                <div>
+                    <table class="table table-striped" >
+                      <thead>
+                        <tr>
+                        <th>Book Id</th>
+                        <th>ISBN </th>
+                        <th>Book Name</th>
+                        <th>Author Name</th>
+                        <th>Publisher </th>
+                        <th>Genre </th>
+                      <th>Volume</th>
+                      <th>Edition</th>
+                    
+                     <th>Status</th>
+                     
+<th>Request Book</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let b of books">
+                       <td>
+                          {{b.bookId}}
+                        </td>
+                        <td>
+                            {{b.isbn}}
+                        </td>
+                        
+                        <td>
+                            {{b.bookName}}
+                        </td>
+                        <td>
+                            {{b.authorName}}
+                        </td>
+                        <td>
+                            {{b.publisher}}
+                        </td>
+                        <td>
+                            {{b.genre}}
+                        </td>
+                        <td>
+                          {{b.volume}}
+                      </td>
+                      <td>
+                          {{b.edition}}
+                      </td>
+                      <td>
+                          {{b.status}}
+                      </td>
+                   
+                      <td *ngIf="b.status=='Available'"><button class="btn btn-info"  (click)="requestBook(b.bookId)">Send Request</button></td>
+                 
+                 
+                    <td *ngIf="b.status=='Issued'"><button class="btn btn-danger" [disabled]>Issued</button></td>
+                  
+                   
+                        <td *ngIf="b.status=='Requested'"><button class="btn btn-success" [disabled]>Requested</button></td>
+                      <br><br>
+                      
+    </tr></tbody>
+    <tr><h3 align="center">&nbsp;&nbsp;&nbsp;{{errorMessage}}</h3></tr></table>
+    <button  class="btn btn-danger" (click)="return()">Back</button></div></div></body>
+ 

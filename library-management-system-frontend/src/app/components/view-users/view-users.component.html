@@ -1,0 +1,106 @@
+<body>
+    <button (click)="searchBy='id'" class="btn btn-success">Search By UserId</button>&nbsp;&nbsp;&nbsp;
+
+<button (click)="searchBy='role'" class="btn btn-success">Search By UserRole</button>&nbsp;&nbsp;&nbsp;
+<button (click)="searchBy='name'" class="btn btn-success">Search By User Name</button>&nbsp;&nbsp;&nbsp;
+<div *ngIf="searchBy=='role'"><br>
+    <form novalidate [formGroup]="searchByRole">
+        <input type="text" placeholder="Enter User Role" formControlName="userRole" [(ngModel)]="textValue" (keyup)="getUserByRole()">
+        <input [(ngModel)]="userRole"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+        &nbsp;&nbsp;<button class="btn btn-primary" type="reset">Reset</button>
+    </form>
+    </div>
+        
+    <div *ngIf="searchBy=='id'"><br>
+      <form novalidate [formGroup]="searchByUserId">
+          <input type="number" placeholder="Enter User Id" formControlName="userId" size="9px" [(ngModel)]="textValue" (keyup)="getUserById()">
+          <input [(ngModel)]="userId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+          &nbsp;&nbsp; <button class="btn btn-info" type="reset">Reset</button>
+      </form>
+      </div>
+    
+    <div *ngIf="searchBy=='name'"><br>
+        <form novalidate [formGroup]="searchByName">
+            <input type="text" placeholder="Enter User Name" formControlName="firstName" [(ngModel)]="textValue" (keyup)="getUserByName()">
+            <input [(ngModel)]="firstName"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+            &nbsp;&nbsp;<button class="btn btn-danger" type="reset">Reset</button>
+        </form>
+        </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="show">
+        <br><br>
+    <h2 align="center">Users Details</h2>
+<!--     <button style="margin-left: 1400px" class="btn btn-primary" (click)="searchRoom()">Search Room</button>&nbsp;&nbsp;&nbsp;&nbsp;
+ -->    <br><br>
+        <div class="reglist">
+            <div>
+                <table class="table table-striped" >
+                  <thead>
+                    <tr>
+                    <th>User Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    
+                    <th>Mail Id</th>
+                    <th>User Role</th>
+                    <th>Mobile Number</th>
+                  <th>Delete</th>
+                  
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let u of users">
+                   <td>
+                      {{u.userId}}
+                    </td>
+                    <td>
+                        {{u.firstName}}
+                    </td>
+                    
+                    <td>
+                        {{u.lastName}}
+                    </td>
+                    <td>
+                        {{u.mailId}}
+                    </td>
+                    <td>
+                        {{u.userRole}}
+                    </td>
+                    <td>
+                        {{u.mobileNumber}}
+                    </td>
+                   
+                    <td>
+                       
+                        <button class="btn btn-primary" (click)="deleteAlertConfirmation(u.userId)">Delete</button>
+                    </td> 
+                   
+                  
+                    
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+              <br>
+              <button  class="btn btn-danger" (click)="return()">Back</button>
+          
+    </div>
+    </body>

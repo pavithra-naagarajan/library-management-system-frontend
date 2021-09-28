@@ -1,0 +1,110 @@
+<body>
+
+
+
+    <button (click)="searchBy='userId'" class="btn btn-success">Search By UserId</button>&nbsp;&nbsp;&nbsp;
+
+    <button (click)="searchBy='bookId'" class="btn btn-success">Search By BookId</button>&nbsp;&nbsp;&nbsp;
+
+    <button (click)="searchBy='id'" class="btn btn-success">Search By IssueId</button>&nbsp;&nbsp;&nbsp;
+
+
+    <!-- <button (click)="searchBy='issueDate'" class="btn btn-success">Search By IssueDate</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="searchBy='dueDate'" class="btn btn-success">Search By DueDate</button>&nbsp;&nbsp;&nbsp; -->
+
+
+
+            
+        <div *ngIf="searchBy=='id'"><br>
+          <form novalidate [formGroup]="searchByIssueId">
+              <input type="number" placeholder="Enter Issue Id" formControlName="issueId" size="9px" [(ngModel)]="textValue" (keyup)="getByIssueId()">
+              <input [(ngModel)]="issueId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+             
+          </form>
+          </div>
+          <div *ngIf="searchBy=='userId'"><br>
+            <form novalidate [formGroup]="searchByUserId">
+                <input type="number" placeholder="Enter User Id" formControlName="userId" size="9px" [(ngModel)]="textValue" (keyup)="getByUserId()">
+                <input [(ngModel)]="userId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+               
+            </form>
+            </div>
+            <div *ngIf="searchBy=='bookId'"><br>
+                <form novalidate [formGroup]="searchByBookId">
+                    <input type="number" placeholder="Enter Book Id" formControlName="bookId" size="9px" [(ngModel)]="textValue" (keyup)="getByBookId()">
+                    <input [(ngModel)]="bookId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+                   
+                </form>
+                </div>
+                <div *ngIf="searchBy=='issueDate'"><br>
+                    <form novalidate [formGroup]="searchByIssueDate">
+                        <input type="date" placeholder="Enter Issue Date" formControlName="issueDate" size="9px" [(ngModel)]="textValue" (keyup)="getByIssueDate()">
+                        <input [(ngModel)]="issueDate"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+                       
+                    </form>
+                    </div>
+                    <div *ngIf="searchBy=='dueDate'"><br>
+                        <form novalidate [formGroup]="searchByDueDate">
+                            <input type="date" placeholder="Enter Due Date" formControlName="dueDate" size="9px" [(ngModel)]="textValue" (keyup)="getByDueDate()">
+                            <input [(ngModel)]="dueDate"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+                           
+                        </form>
+                        </div>
+                                        
+       
+    <div *ngIf="show">
+        <br><br>
+        <h2 align="center">Issued Book Details</h2>
+        <br><br>
+        <div class="reglist">
+       
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Issue Id</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+                <th>Fine Amount</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              
+                <th>User Role</th>
+                <th>Mobile Number</th>
+                <th>ISBN</th>
+                <th>Book Name</th>
+                <th>Author Name </th>
+                <th>Genre</th>
+               
+               
+        </tr></thead>
+
+        <tbody>
+            <tr *ngFor="let br of issuedDetails">
+                <td>{{br.issueId}}</td>
+                <td>{{br.issueDate}}</td>
+                <td>{{br.dueDate}}</td>
+                <td>{{br.fineAmount}}</td>
+                <td>{{br.user.userId}}</td>
+                <td>{{br.user.firstName}}</td>
+                <td>{{br.user.lastName}}</td>
+               
+              <td>{{br.user.userRole}}</td>
+         
+
+                <td>{{br.book.isbn}}</td>
+                <td>{{br.book.bookName}}</td>
+                <td>{{br.book.authorName}}</td>
+                <td>{{br.book.genre}}</td>
+              
+               
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+    <button  class="btn btn-primary" (click)="return()">Back</button>
+    
+
+</body>
+
