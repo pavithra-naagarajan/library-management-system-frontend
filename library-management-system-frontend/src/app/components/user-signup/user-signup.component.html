@@ -1,0 +1,171 @@
+
+<body>
+   
+    <h3 align="center" style="color:black;font-size: x-large ;">Enter User details </h3>
+        <form novalidate style="margin-left: 350px;width: 420px;"
+        [formGroup]="signupForm" (ngSubmit)="mailCheck()">
+            <fieldset>
+          
+    
+                <div class="form-group">
+                    <i class="fas fa-user"></i>&nbsp;
+                    <label>*First Name:</label>
+                
+                    <input type="text" class="form-control" formControlName="firstName">
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('firstName').hasError('required') && signupForm.get('firstName').dirty">
+                        First Name is required
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('firstName').hasError('minlength') && signupForm.get('firstName').dirty">
+                        First Name should be minimum of 3 characters.
+                    </div>
+                </div>
+    
+                 
+           
+                <div class="form-group">
+                    <label>*Last Name:</label>
+                    <input type="text" class="form-control" formControlName="lastName">
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('lastName').hasError('required') && signupForm.get('lastName').dirty">
+                        Last Name is required
+                    </div>
+                   
+                </div>
+               
+                <div class="form-group">
+                    
+                    <i class="fas fa-lock"></i>&nbsp;
+                    <label>*Password:</label>
+                    <input type="password" class="form-control" formControlName="password">
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').dirty">
+                       Password is required
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('password').hasError('minlength') && signupForm.get('password').dirty">
+                        Password  should be minimum of 6 characters.
+                    </div>
+                </div>
+               
+                <div class="form-group">
+
+
+                 <label>*Confirm Password:</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                    
+                    <div class="alert alert-danger"
+                        *ngIf="signupForm.get('confirmPassword').hasError('required') && signupForm.get('confirmPassword').dirty">
+                       Confirm Password is required
+                    </div>
+                    <div *ngIf="signupForm.get('confirmPassword').hasError('confirmedValidator') && signupForm.get('confirmPassword').dirty">
+                        <font color=red>Password and Confirm Password must be same!.</font>
+                    </div>
+                
+                </div>
+            <br>
+                <div class="form-group">
+                    <tr>
+                        <label>*Gender :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td>
+                          <input type="radio" formControlName="gender" name="gender" value="Male">
+                          <label>Male</label>
+                        </td>
+                    
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <td>
+                          <input type="radio" formControlName="gender" name="gender"  value="Female">
+                          <label>Female</label>
+                        </td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <td>
+                            <input type="radio" formControlName="gender" name="gender"  value="Others">
+                            <label>Others</label>
+                          </td>
+                      </tr>
+                      <div class="alert alert-danger"
+                            *ngIf="signupForm.get('gender').hasError('required') && signupForm.get('gender').dirty">
+                            User Gender is required
+                        </div>
+                    </div>
+
+                 <br>
+                    <div class="form-group">
+                        <label>*Age :</label>
+                        <input type="text" class="form-control" formControlName="age">
+                        <div class="alert alert-danger"
+                            *ngIf="signupForm.get('age').hasError('required') && signupForm.get('age').dirty">
+                            User Age is required
+                        </div>
+                        <div class="alert alert-danger"
+                        *ngIf="signupForm.get('age').hasError('min') && signupForm.get('age').dirty">
+                        User Age should be greater than 15.
+                    </div>
+                    </div>
+                  
+                    <div class="form-group">
+                        <div class="col-md-13" >
+            
+                            <label for="userRole">*User Type</label><br><br>
+                            <select class="form-control form-control-lg"   name="userRole" formControlName="userRole" ngModel required>
+                                <option selected="selected">--Select</option>
+                                <option>Student </option>
+                               
+                                <option>Professor</option>
+                                <option>Research Scholar</option>
+                                <option>Others</option>
+                            </select>
+                            <div class="alert alert-danger"
+                      *ngIf="signupForm.get('userRole').hasError('required') && signupForm.get('userRole').dirty">
+                      User Type is required
+                  </div>
+                      </div>
+                      </div>
+                     
+                    <div class="form-group">
+                        <label>*Mail Id :</label>
+                        <input type="email" placeholder="pavithra@gmail.com" class="form-control" formControlName="mailId">
+                        <div class="alert alert-danger"
+                            *ngIf="signupForm.get('mailId').hasError('required') && signupForm.get('mailId').dirty">
+                            User Mail Id is required
+                        </div>
+                        <div class="alert alert-danger"
+                            *ngIf="signupForm.get('mailId').hasError('email') && signupForm.get('mailId').dirty">
+                            Enter Appropriate Mail Id!
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label>*Mobile Number :</label>
+                        <input type="tel" class="form-control" formControlName="mobileNumber">
+                        <div class="alert alert-danger"
+                            *ngIf="signupForm.get('mobileNumber').hasError('required') && signupForm.get('mobileNumber').dirty">
+                            Mobile Number is required
+                        </div>
+                        <div class="alert alert-danger"
+                        *ngIf="signupForm.get('mobileNumber').hasError('minlength') && signupForm.get('mobileNumber').dirty">
+                        Enter Appropriate 10 digit Mobile Number
+                    </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <label>*Address :</label>
+                        <input type="text" class="form-control" formControlName="address">
+                        <div class="alert alert-danger"
+                            *ngIf="signupForm.get('address').hasError('required') && signupForm.get('address').dirty">
+                            User Address is required
+                        </div>
+                    </div>
+               
+                    <div>
+                        <h4><font color=red style="font-size: large;">{{errorMessage }}</font></h4><br>
+                    </div>
+                </fieldset>
+                <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button class="btn btn-success" >Create account</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="reset" class="btn btn-primary">Reset</button>
+                <br><br>
+                <button  class="btn btn-danger" (click)="return()">Back</button> 
+           </form> 
+  </body>

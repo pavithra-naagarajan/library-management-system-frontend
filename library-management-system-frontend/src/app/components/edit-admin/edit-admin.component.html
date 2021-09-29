@@ -1,0 +1,58 @@
+<body>
+    <div class="container">
+        <br><br>
+        <h3 align="center" style="color:black;font-size: x-large ;">Edit User details </h3>
+        <form novalidate style="margin-left: 350px;width: 420px;" [formGroup]="editAdminForm" (ngSubmit)="updateAdminDetails()">
+            
+            <br>
+            <fieldset>
+                <div class="form-group">
+                    <label>*Admin Id :</label>
+                    <input type="text" class="form-control" formControlName="adminId" [readonly]="adminId!=-1 ? true :false"  >
+                       
+                   
+    
+                </div> 
+                <div class="form-group">
+                    <label>*Admin Name:</label>
+                    <input type="text" class="form-control" formControlName="adminName">
+                    <div class="alert alert-danger"
+                        *ngIf="editAdminForm.get('adminName').hasError('required') && editAdminForm.get('adminName').dirty">
+                        Admin Name is required
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label>*Password:</label>
+                        <input type="text" class="form-control" formControlName="adminPassword">
+                        <div class="alert alert-danger"
+                            *ngIf="editAdminForm.get('adminPassword').hasError('required') && editAdminForm.get('adminPassword').dirty">
+                            Password is required
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label>*Mail Id:</label>
+                            <input type="text" class="form-control" formControlName="mailId">
+                            <div class="alert alert-danger"
+                                *ngIf="editAdminForm.get('mailId').hasError('required') && editAdminForm.get('mailId').dirty">
+                                Mail Id is required
+                            </div>
+                            <div class="alert alert-danger"
+                            *ngIf="editAdminForm.get('mailId').hasError('email') && editAdminForm.get('mailId').dirty">
+                            Enter Valid Email Id!
+                        </div>
+                            </div>
+    
+                 
+                <br>
+               
+                </fieldset>
+        
+        <br>
+               
+            
+                <button type="submit" class="btn btn-primary" [disabled] ="editAdminForm.invalid">Edit</button>&nbsp;&nbsp;
+                <button class="btn btn-success" type="reset">Reset</button>&nbsp;&nbsp;
+                 <button  class="btn btn-danger" (click)="return()">Back</button>
+       </form>   
+    </div>
+    </body>

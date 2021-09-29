@@ -1,0 +1,45 @@
+<body>
+<form 
+novalidate [formGroup]="loginForm" (ngSubmit)="userLogin()" style="width:300px;padding: 30px;margin-left: 430px;">
+    
+   <!--  <div class="avatar">
+        <img src="assets/avatar.svg">
+    </div><br/> -->
+    <fieldset>
+        <div class="form-group">
+            <i class="fas fa-user"></i>&nbsp;
+            <label>*User Mail:</label> 
+            <input type="email" class="form-control" formControlName="mailId">
+            <div class="alert alert-danger"
+                        *ngIf="loginForm.get('mailId').hasError('email') && loginForm.get('mailId').dirty">
+                        Enter appropriate User Mail!
+                    </div>
+                    <div class="alert alert-danger"
+                    *ngIf="loginForm.get('mailId').hasError('required') && loginForm.get('mailId').dirty">
+                    User Mail is required!
+                </div>
+        </div>
+        <div class="form-group">
+            <i class="fas fa-lock"></i>&nbsp;
+            <label>*Password:</label>
+            <input type="password" class="form-control" formControlName="password">
+            <div class="alert alert-danger"
+            *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').dirty">
+            User Password is required!
+        </div>
+        </div>
+    </fieldset>
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="reset" class="btn btn-primary">Reset</button>
+    <br><br>
+    
+</form>
+<div align="center">
+<td style="align-content: center;">
+New User?&nbsp;&nbsp; <button class="btn btn-danger" (click)=signup()>Sign Up</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Forgot Password?&nbsp;&nbsp; <button class="btn btn-info" (click)=generatePassword()>Click Here </button>
+</td>
+</div>
+<br><br>
+</body>

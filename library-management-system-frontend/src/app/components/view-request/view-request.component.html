@@ -1,0 +1,55 @@
+<body>
+    <div *ngIf="show">
+        <br><br>
+        <h2 align="center">Book Request Details</h2>
+        <br><br>
+        <div class="reglist">
+       
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Request Id</th>
+                <th>Number Of Days</th>
+                
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Mail Id</th>
+                <th>User Role</th>
+                <th>Mobile Number</th>
+                <th>ISBN</th>
+                <th>Book Name</th>
+                <th>Author Name </th>
+                <th>Genre</th>
+                <th>Publisher</th>
+                <th>Approve</th>
+        </tr></thead>
+
+        <tbody>
+            <tr *ngFor="let br of bookRequests">
+                <td>{{br.requestId}}</td>
+                <td>{{br.numberOfDays}}</td>
+              
+                <td>{{br.user.firstName}}</td>
+                <td>{{br.user.lastName}}</td>
+                <td>{{br.user.mailId}}</td>
+              <td>{{br.user.userRole}}</td>
+                <td>{{br.user.mobileNumber}}</td>
+
+                <td>{{br.book.isbn}}</td>
+                <td>{{br.book.bookName}}</td>
+                <td>{{br.book.authorName}}</td>
+                <td>{{br.book.genre}}</td>
+                <td>{{br.book.publisher}}</td>
+                <td>
+                    <button class="btn btn-info" (click)="approveRequest(br.user.userId,br.book.bookId,br.numberOfDays,br.requestId)">Approve</button></td>
+               
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+    <button  class="btn btn-primary" (click)="return()">Back</button>
+    
+
+</body>

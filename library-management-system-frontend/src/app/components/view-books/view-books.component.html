@@ -1,0 +1,105 @@
+<body>
+    
+<button (click)="searchBy='id'" class="btn btn-success">Search By BookId</button>&nbsp;&nbsp;&nbsp;
+
+<button (click)="searchBy='isbn'" class="btn btn-success">Search By ISBN</button>&nbsp;&nbsp;&nbsp;
+<button (click)="searchBy='publisher'" class="btn btn-success">Search By Publisher</button>&nbsp;&nbsp;&nbsp;
+    
+
+      <div *ngIf="searchBy=='publisher'"><br>
+        <form novalidate [formGroup]="searchByPublisher">
+            <input type="text" placeholder="Enter Publisher Name" formControlName="publisher" [(ngModel)]="textValue" (keyup)="getBookByPublisher()">
+            <input [(ngModel)]="publisher"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+            
+        </form>
+        </div>
+            
+        <div *ngIf="searchBy=='id'"><br>
+          <form novalidate [formGroup]="searchByBookId">
+              <input type="number" placeholder="Enter Book Id" formControlName="bookId" size="9px" [(ngModel)]="textValue" (keyup)="getBookById()">
+              <input [(ngModel)]="bookId"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+             
+          </form>
+          </div>
+        
+        <div *ngIf="searchBy=='isbn'"><br>
+            <form novalidate [formGroup]="searchByISBN">
+                <input type="text" placeholder="Enter ISBN" formControlName="isbn" [(ngModel)]="textValue" (keyup)="getBookByISBN()">
+                <input [(ngModel)]="isbn"  [ngModelOptions]="{standalone: true} " [hidden]="true">
+               
+            </form>
+            </div>
+       
+
+            <div *ngIf="show">
+        <br><br>
+    <h2 align="center">Book Details</h2>
+<!--     <button style="margin-left: 1400px" class="btn btn-primary" (click)="searchRoom()">Search Room</button>&nbsp;&nbsp;&nbsp;&nbsp;
+ -->    <br><br>
+        <div class="reglist">
+            <div>
+                <table class="table table-striped" >
+                  <thead>
+                    <tr>
+                    <th>Book Id</th>
+                    <th>ISBN </th>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                    <th>Publisher </th>
+                    <th>Genre </th>
+                  <th>Volume</th>
+                  <th>Edition</th>
+                  <th>status</th>
+                  <th>Delete</th>
+                  <th>Edit</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let b of books">
+                   <td>
+                      {{b.bookId}}
+                    </td>
+                    <td>
+                        {{b.isbn}}
+                    </td>
+                    
+                    <td>
+                        {{b.bookName}}
+                    </td>
+                    <td>
+                        {{b.authorName}}
+                    </td>
+                    <td>
+                        {{b.publisher}}
+                    </td>
+                    <td>
+                        {{b.genre}}
+                    </td>
+                    <td>
+                      {{b.volume}}
+                  </td>
+                  <td>
+                      {{b.edition}}
+                  </td>
+                  <td>
+                    {{b.status}}
+                </td>
+                    <td>
+                       
+                        <button class="btn btn-primary" (click)="deleteAlertConfirmation(b.bookId)">Delete</button>
+                    </td> 
+                    <td>
+                      <!-- (click)="editRoom(u.userId)" -->
+                      <button class="btn btn-success"  (click)="editBook(b.bookId)"  >Edit</button>
+                    </td> 
+                    
+                  </tr>
+                  </tbody><tr><h3 align="center">&nbsp;&nbsp;&nbsp;{{errorMessage}}</h3></tr>
+                </table>
+              </div>
+              </div>
+              <br>
+              <button  class="btn btn-danger" (click)="return()">Back</button>
+          
+    </div>
+    </body>

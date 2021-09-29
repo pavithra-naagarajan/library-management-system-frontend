@@ -1,0 +1,57 @@
+<body>
+    <h3 align="center" >Enter Admin details </h3>
+    
+    <br><br>
+    <div class="container">
+        <form novalidate style="margin-left: 350px;width: 420px;"
+        [formGroup]="addAdminForm" (ngSubmit)="addAdminDetails()">
+            <fieldset>
+              
+                   
+                <div class="form-group">
+                    <label>*Admin Name :</label>
+                    <input type="text" class="form-control" formControlName="adminName">
+                    <div class="alert alert-danger"
+                        *ngIf="addAdminForm.get('adminName').hasError('required') && addAdminForm.get('adminName').dirty">
+                        Admin Name is required
+                    </div>
+                   
+                </div>
+    <br>
+    <div class="form-group">
+        <label>*Admin Role :</label>
+        <input type="text" class="form-control" formControlName="adminRole">
+        <div class="alert alert-danger"
+            *ngIf="addAdminForm.get('adminRole').hasError('required') && addAdminForm.get('adminRole').dirty">
+            Admin Role is required
+        </div>
+       
+    </div> 
+    <div class="form-group">
+        <label>*Admin MailId :</label>
+        <input type="text" class="form-control" formControlName="mailId">
+        <div class="alert alert-danger"
+            *ngIf="addAdminForm.get('mailId').hasError('required') && addAdminForm.get('mailId').dirty">
+            Admin Mail Id is required
+        </div>
+        <div class="alert alert-danger"
+        *ngIf="addAdminForm.get('mailId').hasError('email') && addAdminForm.get('mailId').dirty">
+       Enter valid Email Id!
+    </div>
+    </div> 
+   
+                </fieldset>
+        
+        <br>
+               
+                <td>
+                    <button type="submit" class="btn btn-primary" [disabled] ="addAdminForm.invalid">Add Admin</button>&nbsp;&nbsp;
+                    <button class="btn btn-success" type="reset">Reset</button>
+                </td>
+        
+               <br><br>
+               <button  class="btn btn-danger" (click)="return()">Back</button> 
+           </form>   
+    </div>
+    
+    </body>

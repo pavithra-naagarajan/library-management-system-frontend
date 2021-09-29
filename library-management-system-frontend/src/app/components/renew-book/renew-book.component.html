@@ -1,0 +1,38 @@
+<body>
+    <form novalidate style="margin-left: 350px;width: 420px;"
+    [formGroup]="renewForm" (ngSubmit)="renewBook()">
+        <fieldset>
+          
+               
+            
+    <br>
+    <div class="form-group">
+    <label>*Book Id :</label>
+    <input type="text" class="form-control" formControlName="bookId">
+    <div class="alert alert-danger"
+        *ngIf="renewForm.get('bookId').hasError('required') && renewForm.get('bookId').dirty">
+        Book Id is required
+    </div>
+    
+    </div> 
+    <br>
+    <div class="form-group">
+        <label>*Issue Id :</label>
+        <input type="text" class="form-control" formControlName="issueId">
+        <div class="alert alert-danger"
+            *ngIf="renewForm.get('issueId').hasError('required') && renewForm.get('issueId').dirty">
+            Issue Id is required
+        </div>
+        
+        </div> 
+        </fieldset>
+        <br>
+        <td>
+            <button type="submit" class="btn btn-primary" [disabled] ="renewForm.invalid">Return Book</button>&nbsp;&nbsp;
+            <button class="btn btn-success" type="reset">Reset</button>
+        </td>
+    
+       <br><br>
+       <button  class="btn btn-danger" (click)="return()">Back</button>
+        </form>
+    </body>

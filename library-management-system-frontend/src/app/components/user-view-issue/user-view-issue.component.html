@@ -1,0 +1,58 @@
+<body>
+    <div *ngIf="show">
+        <br><br>
+        <h2 align="center">Issued Book Details</h2>
+        <br><br>
+        <div class="reglist">
+       
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Issue Id</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+                <th>Fine Amount</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+              
+                <th>User Role</th>
+                <th>Mobile Number</th>
+                <th>Book Id</th>
+                <th>ISBN</th>
+                <th>Book Name</th>
+                <th>Author Name </th>
+                <th>Genre</th>
+               
+               
+        </tr></thead>
+    
+        <tbody>
+            <tr *ngFor="let br of issuedDetails">
+                <td>{{br.issueId}}</td>
+                <td>{{br.issueDate}}</td>
+                <td>{{br.dueDate}}</td>
+                <td>{{br.fineAmount}}</td>
+                <td>{{br.user.userId}}</td>
+                <td>{{br.user.firstName}}</td>
+                <td>{{br.user.lastName}}</td>
+               
+              <td>{{br.user.userRole}}</td>
+         
+                <td>{{br.book.bookId}}</td>
+                <td>{{br.book.isbn}}</td>
+                <td>{{br.book.bookName}}</td>
+                <td>{{br.book.authorName}}</td>
+                <td>{{br.book.genre}}</td>
+              
+               
+    
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    <button  class="btn btn-primary" (click)="return()">Back</button>
+    
+    
+    </body>
+    
